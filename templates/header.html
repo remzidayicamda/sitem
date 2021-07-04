@@ -1,0 +1,172 @@
+<style>
+    nav .dropdown:hover > .dropdown-menu{
+        display: block;
+    }
+
+    .dropdown-menu li a {
+        color: white;
+    }
+
+    .dropdown-divider{
+        color: white;
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: #333;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .nav-item:hover{
+        background-color: #333;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .mobil-navbar{
+        display: none;
+    }
+    
+    @media screen and (max-width:1000px) {
+        .navbar{
+            display: none;
+        }
+
+        .mobil-navbar{
+            display: block;
+            height: 450px;
+        }
+
+        .mobil-navbar ul li a{
+            padding: 15px;
+            margin-left: 20px;
+        } 
+
+        .mobil-navbar form{
+            margin-left: 5%;
+            margin-bottom: 15px;
+        }
+        .mobil-navbar form .form-control{
+            width: 70%;
+        }
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 15px;">
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'home_view' %}">Anasayfa</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" style="cursor: auto;">
+                    Dersler
+                </a>
+
+                <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/post/index/?q=Arduino">Arduino</a></li>
+                    <li><a class="dropdown-item" href="/post/index/?q=mBlcok">mBlock</a></li>
+                    <li><a class="dropdown-item" href="/post/index/?q=Scracth">Scracth</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item disabled" href="">HTML - CSS (Yakında)</a></li>
+                    <li><a class="dropdown-item disabled" href="">Python (Yakında)</a></li>
+                    <li><a class="dropdown-item disabled" href="">Node Js (Yakında)</a></li>
+
+
+                </ul>
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="https://www.youtube.com/channel/UCvofcBzcphDAfzbOYlsP-9g" target="_blank">Youtube</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'info_view' %}">Hakkımda</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'contact' %}">İletişim</a>
+            </li>
+
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'post:create' %}">Yazı Ekle</a>
+            </li>
+            {% endif %}
+
+            <li class="nav-item">
+                <a href="/post/index" class="nav-link active text-white" aria-current="page">Tüm Dersler</a>
+            </li>
+
+        </ul>
+        <form class="d-flex" method="GET" style="margin-right: 15px;">
+           <input type="text" name="q" placeholder="Ara..." class="form-control me-2" value="{{request.GET.q}}">
+           <input type="submit" value="&nbsp;&nbsp;Ara&nbsp;&nbsp;" class="btn btn-outline-success">
+        </form>
+
+    </div>
+    </div>
+</nav>
+
+<section class="mobil-navbar bg-dark">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 15px;">
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href=" {% url 'home_view' %} ">Anasayfa</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Dersler
+                </a>
+
+                <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/post/index/?q=Arduino">Arduino</a></li>
+                    <li><a class="dropdown-item" href="/post/index/?q=mBlcok">mBlock</a></li>
+                    <li><a class="dropdown-item" href="/post/index/?q=Scracth">Scracth</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item disabled" href="#">HTML - CSS (Yakında)</a></li>
+                    <li><a class="dropdown-item disabled" href="#">Python (Yakında)</a></li>
+                    <li><a class="dropdown-item disabled" href="#">Node Js (Yakında)</a></li>
+
+
+                </ul>
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="https://www.youtube.com/channel/UCvofcBzcphDAfzbOYlsP-9g" target="_blank">Videolar</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'info_view' %}">Hakkımda</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'contact' %}">İletişim</a>
+            </li>
+
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'post:create' %}">Yazı Ekle</a>
+            </li>
+            {% endif %}
+
+            <li class="nav-item">
+                <a href="/post/index" class="nav-link active text-white" aria-current="page">Tüm Dersler</a>
+            </li>
+
+        </ul>
+        <form class="d-flex" method="GET" style="margin-right: 15px;">
+            <input type="text" name="q" placeholder="Ara..." class="form-control me-2" value="{{request.GET.q}}">
+            <input type="submit" value="&nbsp;&nbsp;Ara&nbsp;&nbsp;" class="btn btn-outline-success">
+         </form>
+ 
+    </div>
+</section>

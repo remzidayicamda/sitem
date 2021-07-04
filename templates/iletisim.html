@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}İletişim | Onur Kaan{% endblock %}
+
+{% block body %}
+
+<style>
+
+    .mobil{
+        display: none;
+    }
+
+
+    @media screen and (max-width:1000px) {
+        .mobil{
+            display: block;
+        }
+
+        .pc{
+            display: none;
+        }
+    }
+</style>
+
+<center>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWUs3Q0ZfT-ZtKLBSCzhEYFoed2fKyQsxhcaUT7LeC_MPeow/viewform?embedded=true" class="pc" width="648" height="860" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWUs3Q0ZfT-ZtKLBSCzhEYFoed2fKyQsxhcaUT7LeC_MPeow/viewform?embedded=true" class="mobil" width="500" height="860" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+
+</center>
+
+
+{% endblock %}
